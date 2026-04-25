@@ -1,0 +1,15 @@
+import type {Address, Student, Technologies} from '../01/01.ts';
+
+export const addTechnologies = (technologies: Technologies[], skill: string) => {
+    return technologies.push({
+        id: technologies.length,
+        title: skill,
+        isDone: false
+    })
+}
+export const changeTechnologiesStatus = (technologies: Technologies, status: boolean) => {
+    technologies.isDone = status
+}
+export const countryOfStudent = (student: Student, title: string) => {
+    student.address.country===title
+}

@@ -5,7 +5,7 @@ export type Student={
     address: Address
     technologies: Technologies[]
 }
-type Address = {
+export type Address = {
     country: string
     city: City
 }
@@ -13,7 +13,7 @@ type City = {
     name: string
     street: string
 }
-type Technologies= {
+export type Technologies= {
     id: number
     title: string
     isDone: boolean
