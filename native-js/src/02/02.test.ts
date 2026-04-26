@@ -47,9 +47,9 @@ test('change status of technologie', ()=>{
     expect(student.technologies[2].isDone).toBe(false)
 })
 test('country of student should be right', ()=>{
-    countryOfStudent(student, 'India')
-    countryOfStudent(student, 'United Kingdom')
+  const result=  countryOfStudent(student, 'India')
+    const result2 = countryOfStudent(student, 'United Kingdom')
 
-    expect(student.address.country).toBe(false)
-    expect(student.address.country).toBe(true)
+    expect(result).toBe(false)
+    expect(result2).toBe(true)
 })

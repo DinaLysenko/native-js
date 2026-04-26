@@ -11,5 +11,5 @@ export const changeTechnologiesStatus = (technologies: Technologies, status: boo
     technologies.isDone = status
 }
 export const countryOfStudent = (student: Student, title: string) => {
-    student.address.country===title
+    return  student.address.country===title
 }
