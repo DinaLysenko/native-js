@@ -1,4 +1,4 @@
-import type {Address, Student, Technologies} from '../01/01.ts';
+import type {Student, Technologies} from '../01/01.ts';
 
 export const addTechnologies = (technologies: Technologies[], skill: string) => {
     return technologies.push({
