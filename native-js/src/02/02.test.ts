@@ -1,9 +1,9 @@
 import type {Student} from '../01/01.ts';
-import {describe, expect, test} from 'vitest';
+import {beforeEach, expect, test} from 'vitest';
 import {addTechnologies, changeTechnologiesStatus, countryOfStudent} from './02.ts';
 
 let student: Student
-describe('student', () => {
+beforeEach( () => {
     student={
         name: 'Ivan',
         age: 25,

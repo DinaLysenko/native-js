@@ -1,9 +1,9 @@
-import {describe, it, expect} from 'vitest';
+import { it, expect, beforeEach} from 'vitest';
 import type {CityType} from './01-01.ts';
 
 let city: CityType;
 
-describe('city should be equal',() => {
+beforeEach(() => {
     city = {
         title: 'New York',
         houses: [

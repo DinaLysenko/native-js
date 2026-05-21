@@ -2,7 +2,7 @@ import type {Student, Technologies} from '../01/01.ts';
 
 export const addTechnologies = (technologies: Technologies[], skill: string) => {
     return technologies.push({
-        id: technologies.length,
+        id: technologies.length+1,
         title: skill,
         isDone: false
     })

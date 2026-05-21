@@ -1,12 +1,14 @@
-import {beforeEach,  expect, test} from 'vitest';
 import type {CityType} from '../01/01-01.ts';
-import {changeBudget, repairHouse, toFireStaff, toHireStaff} from './03.ts';
+import { test, expect, beforeEach} from 'vitest';
+import {demolishHousesOnTheStreet, getBuildingsWithStaffCountGreaterThen, getHousesOnTheStreet} from './04.ts';
+
 let city: CityType
 beforeEach( () => {
     city = {
         title: 'New York',
         houses: [
             {
+                id: 1,
                 buildedAt: 2012,
                 repaired: false,
                 address: {
@@ -17,6 +19,7 @@ beforeEach( () => {
                 }
             },
             {
+                id: 2,
                 buildedAt: 2008,
                 repaired: false,
                 address: {
@@ -27,6 +30,7 @@ beforeEach( () => {
                 }
             },
             {
+                id: 3,
                 buildedAt: 2020,
                 repaired: false,
                 address: {
@@ -63,31 +67,29 @@ beforeEach( () => {
         citizensNumber: 1000000
     }
 })
-test('Budget should be changed for HOSPITAL', () => {
-    expect(city.governmentBuildings[0].budget).toBe(200000)
-    changeBudget(city.governmentBuildings[0], 100000)
-    expect(city.governmentBuildings[0].budget).toBe(300000)
-})
+test('Houses should be destroyed', () => {
+    demolishHousesOnTheStreet(city, 'Happy street');
 
-test('Budget should be changed for FIRE-STATION', () => {
-    expect(city.governmentBuildings[1].budget).toBe(500000)
-    changeBudget(city.governmentBuildings[1], -100000)
-    expect(city.governmentBuildings[1].budget).toBe(400000)
-})
+    expect(city.houses.length).toBe(2);
+    expect(city.houses[0].id).toBe(1);
+});
 
-test('House should be repaired', () => {
-    repairHouse(city.houses[1])
-    expect(city.houses[1].repaired).toBeTruthy()
-})
+test('list of streets titles of houses', () => {
+    let happyHouses = getHousesOnTheStreet(city.houses, 'Happy street');
+    let whiteHouses = getHousesOnTheStreet(city.houses, 'White street');
 
-test('staff should be increased', () => {
-    toFireStaff(city.governmentBuildings[0], 20)
-    expect(city.governmentBuildings[0].staffCount).toBe(180)
-})
+    expect(happyHouses.length).toBe(1);
+    expect(whiteHouses.length).toBe(1);
+});
 
-test('staff should be hire', () => {
-    toHireStaff(city.governmentBuildings[0], 20)
-    expect(city.governmentBuildings[0].staffCount).toBe(220)
-})
+test('buildings with correct staff count', () => {
+    let buildings =
+        getBuildingsWithStaffCountGreaterThen(
+            city.governmentBuildings,
+            500);
+
+    expect(buildings.length).toBe(1);
+    expect(buildings[0].type).toBe('FIRE-STATION');
+});
 
 

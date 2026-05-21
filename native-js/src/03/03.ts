@@ -10,5 +10,5 @@ export const toFireStaff = (buildings: GovernmentBuildings, staff: number) => {
     return buildings.staffCount -= staff
 }
 export const toHireStaff = (buildings: GovernmentBuildings, staff: number) => {
-    return buildings.staffCount += staff
+   return buildings.staffCount += staff
 }
