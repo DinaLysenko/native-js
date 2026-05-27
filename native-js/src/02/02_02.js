@@ -51,3 +51,23 @@ export function toReversedArray(array) {
     }
     return newArray
 }
+
+export const includesElement = (array, el, startIndex = 0) => {
+    if (startIndex < 0) {
+        startIndex = array.length + startIndex
+    }
+    for (let i = startIndex; i < array.length; i++) {
+        if (array[i] === el) {
+            return true
+        }
+    }
+    return false
+}
+export const reverseArray = (array) => {
+    for (let i=0; i < array.length/2; i++) {
+        let temp=array[array.length-1-i]
+        array[array.length-1-i] = array[i]
+        array[i]=temp
+    }
+    return array
+}

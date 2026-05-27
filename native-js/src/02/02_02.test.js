@@ -1,4 +1,4 @@
-import {concat, indexOfArray, pushArray, toReversedArray} from "./02_02.js";
+import {concat, includesElement, indexOfArray, pushArray, reverseArray, toReversedArray} from "./02_02.js";
 
 let number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 let number2 = [1, 2, 3, 4, 5]
@@ -31,4 +31,24 @@ test('array should be reversed', () => {
     let newArray2 = toReversedArray([1, , 3, 4])
     expect(newArray1).toEqual([5, 4, 3, 2, 1])
     expect(newArray2).toEqual([4, 3, undefined, 1])
+})
+test('array should be include element', () => {
+    let answer1 = includesElement(number2, 2)
+    let answer2 = includesElement(number2, 6)
+    let answer3 = includesElement(number2, 2,100)
+    let answer4 = includesElement(number2, 2,-100)
+    let answer5 = includesElement(number2, 1,-2)
+
+    expect(answer1).toEqual(true)
+    expect(answer2).toEqual(false)
+    expect(answer3).toEqual(false)
+    expect(answer4).toEqual(true)
+    expect(answer5).toEqual(false)
+
+})
+test('array should be reversed mutably', () => {
+    let array = reverseArray(number2)
+
+    expect(array).toEqual([5, 4, 3, 2, 1])
+    expect(array).toEqual(number2)
 })
